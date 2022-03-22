@@ -1,0 +1,36 @@
+{
+  "name": "taiwo-backend",
+  "version": "1.0.0",
+  "description": "backend for an angular service ",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamveekthorr/app-backend.git"
+  },
+  "keywords": [
+    "angular",
+    "nodejs",
+    "express"
+  ],
+  "author": "devthorr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamveekthorr/app-backend/issues"
+  },
+  "homepage": "https://github.com/iamveekthorr/app-backend#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-mongo-sanitize": "^2.2.0",
+    "helmet": "^5.0.2",
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
