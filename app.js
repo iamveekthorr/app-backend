@@ -9,12 +9,18 @@ const productRoutes = require('./routes/product.routes');
 const app = express();
 
 app.enable('trust proxy');
+
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ limit: '10kb', extended: true }));
+
 //Implement cors
 app.use(cors({ origin: true, credentials: true }));
 
 app.options('*', cors());
 
+// sanitize mongodb for XXS attack
 app.use(mongoSanitize());
+
 app.use(helmet());
 
 app.use(cookieParser());

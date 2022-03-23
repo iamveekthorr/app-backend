@@ -9,7 +9,7 @@ const server = app.listen(PORT, () => {
 });
 
 process.on('unhandledRejection', (reason, promise) => {
-  logger.error(`Unhandled rejection at ${promise}, reason: ${reason.message}`);
+  console.error(`Unhandled rejection at ${promise}, reason: ${reason.message}`);
 
   server.close(() => {
     process.exit(1);
@@ -22,10 +22,10 @@ mongoose
   .catch((err) => console.log(err));
 
 process.on('SIGTERM', () => {
-  logger.info('SIGTERM Received, Shutting down gracefully');
+  console.info('SIGTERM Received, Shutting down gracefully');
 
   server.close(() => {
-    logger.info('Process Terminated because of SIGTERM');
+    console.info('Process Terminated because of SIGTERM');
   });
 });
 
