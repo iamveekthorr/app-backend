@@ -1,10 +1,6 @@
 const dotenv = require('dotenv');
 
-config = dotenv.config({ path: '.env' });
-
-if (config.error) {
-  throw new Error(config.error);
-}
+dotenv.config({ path: '.env' });
 
 const envConfig = {
   MONGO_URI: process.env.MONGO_URI,
