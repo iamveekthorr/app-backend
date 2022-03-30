@@ -50,19 +50,19 @@ const productSchema = new Schema(
       type: Number,
     },
     corrected_system_value: {
-      type: String,
+      type: Number,
     },
     corrected_difference: {
-      type: String,
+      type: Number,
     },
     notable_transactions: {
-      type: String,
+      type: Number,
     },
     true_excess: {
-      type: String,
+      type: Number,
     },
     shortage: {
-      type: String,
+      type: Number,
     },
   },
   {
