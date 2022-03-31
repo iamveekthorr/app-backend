@@ -18,7 +18,7 @@ exports.createProduct = catchAsync(async (req, res, next) => {
   // Check if a field is empty
   Object.values(values).forEach((value) => {
     if (value === ' ') {
-      return next(new AppError(`${values[value]} is not to be empty`));
+      return next(new AppError(`${values[value]} is not to be empty`, 400));
     }
   });
 
