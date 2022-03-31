@@ -16,13 +16,13 @@ exports.createProduct = catchAsync(async (req, res, next) => {
   const values = { ...req.body };
 
   // Check if a field is empty
-  Object.values(values).forEach((value) => {
-    if (value === ' ') {
-      return next(new AppError(`${values[value]} is not to be empty`, 400));
-    }
-  });
+  // Object.values(values).forEach((value) => {
+  //   if (value === ' ') {
+  //     return next(new AppError(`${values[value]} is not to be empty`, 400));
+  //   }
+  // });
 
-  const product = await Product.create(req.body);
+  const product = await Product.create(values);
   return res.status(200).json({
     message: 'success',
     data: {
