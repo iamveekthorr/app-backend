@@ -48,15 +48,42 @@ exports.updateProduct = catchAsync(async (req, res, next) => {
   if (!product) {
     return next(new AppError('product not found', 404));
   }
+
   const updatedProduct = await Product.findByIdAndUpdate(
     product.id,
-    { $set: req.body },
+    { ...req.body },
     { new: true }
   );
-  res.json({
+
+  res.status(201).json({
     message: 'success',
     data: {
       updatedProduct,
     },
+  });
+});
+
+exports.getProductById = catchAsync(async (req, res, next) => {
+  const { id } = req.param;
+
+  const product = await Product.findById(id);
+
+  if (!product) return next(new AppError('Product not found', 404));
+
+  res.status(200).json({
+    status: 'success',
+    product,
+  });
+});
+
+exports.deleteProductById = catchAsync(async (req, res, next) => {
+  const { id } = req.param;
+
+  const product = await Product.findById(id);
+
+  if (!product) return next(new AppError('Product not found', 404));
+
+  res.status(200).json({
+    status: 'success',
   });
 });
