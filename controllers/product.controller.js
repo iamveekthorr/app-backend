@@ -34,31 +34,20 @@ exports.createProduct = catchAsync(async (req, res, next) => {
 exports.updateProduct = catchAsync(async (req, res, next) => {
   const { id: productId } = req.params;
 
-  const values = { ...req.body };
-
-  // Check if a field is empty
-  Object.values(values).forEach((value) => {
-    if (value === ' ') {
-      return next(new AppError(`${values[value]} is not to be empty`));
-    }
+  const product = await await Product.findByIdAndUpdate(productId, req.body, {
+    new: true,
+    runValidators: true,
   });
 
-  const product = await Product.findById(productId);
-
+  // if product is not found, then this will run
   if (!product) {
     return next(new AppError('product not found', 404));
   }
 
-  const updatedProduct = await Product.findByIdAndUpdate(
-    product.id,
-    { ...req.body },
-    { new: true }
-  );
-
   res.status(201).json({
     message: 'success',
     data: {
-      updatedProduct,
+      product,
     },
   });
 });
